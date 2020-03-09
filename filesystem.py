@@ -1,4 +1,6 @@
 import os
+
+# language choosing block
 '''
 language = input('Change language: en, ru').lower()
 if language == 'en':
@@ -6,8 +8,12 @@ if language == 'en':
 elif language == 'ru':
     import locru as loc
 '''
+
+
 import locru as loc
 
+
+# the checking command block
 def acceptCommand():
     try:
         com = int(input())
@@ -19,20 +25,42 @@ def acceptCommand():
         return com
 
 
-# TODO:(Sveta) defs: countBytes(path), moveUp()
-# TODO:(Vladimir) defs: countFiles(path), moveDown(currentDir)
-
+# counts the size of all files in the directory and subdirectories
+sz = 0
 def countBytes(path):
     pass
+
+# moves a user to a parent directory
 def moveUp():
-    pass
+    try:
+        os.chdir(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
+    except:
+        acceptCommand()
+
+
+# counts all the files in the directory and subdirectories
 def countFiles(path):
     pass
-def moveDown(currentDir):
-    pass
+
+
+# gives the user a list of subdirectories and after the user has chosen one - moves him to it
+def moveDown():
+    print('\n' + loc.movedown)
+    drlst = []
+    for n in range(len(os.listdir(os.getcwd()))):
+        if os.path.isdir(os.getcwd() + '/' + os.listdir(os.getcwd())[n]):
+            drlst.append(str(os.listdir(os.getcwd())[n]))
+    for i in range(len(drlst)):
+        print(str(i + 1) + '. ' + drlst[i])
+
+    togo = input()
+    os.chdir(os.getcwd() + '/' + drlst[int(togo) - 1])
+
 
 findtarget = 0
 
+
+# gives the list of paths to the files with the searched word in their names
 def search(target, workdirect):
     try:
         global findtarget
@@ -52,6 +80,7 @@ def search(target, workdirect):
         pass
 
 
+# looks for the file with the given name
 def findFiles():
     direct = int(input(loc.direct))
     target = input(loc.target)
@@ -63,13 +92,15 @@ def findFiles():
     if findtarget == 0:
         print(loc.notarget, target)
 
+
+# the command choosing block
 def runCommand(command):
     if command == 1:
         print(os.listdir(os.getcwd()))
     elif command == 2:
         moveUp()
     elif command == 3:
-        moveDown(currentDir)
+        moveDown()
     elif command == 4:
         countFiles(path)
     elif command == 5:
@@ -78,6 +109,7 @@ def runCommand(command):
         findFiles()
     elif command == 7:
         print(loc.quit)
+
 
 def main():
     while True:
@@ -88,4 +120,6 @@ def main():
         runCommand(command)
         if command == 7:
             break
+
+
 main()

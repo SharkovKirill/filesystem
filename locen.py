@@ -11,3 +11,5 @@ direct = 'Enter 1 if you want to search in the current directory, otherwise ente
 workdir = 'Enter directory path:'
 target = 'Enter target:'
 notarget = 'This directory does not contain a file with'
+movedown = 'Choose a directory to get to: '
+moveup = 'There is no parental directory for this path'
