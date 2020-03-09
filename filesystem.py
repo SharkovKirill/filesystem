@@ -1,16 +1,17 @@
+#Developers: Sharkov K(70%)
 import os
 
-# language choosing block
-'''
+
+
 language = input('Change language: en, ru').lower()
 if language == 'en':
     import locen as loc
 elif language == 'ru':
     import locru as loc
-'''
 
 
-import locru as loc
+
+
 
 
 # the checking command block
