@@ -1,4 +1,4 @@
-#Developers: Sharkov K(70%)
+#Developers: Sharkov K(65%)
 import os
 
 
