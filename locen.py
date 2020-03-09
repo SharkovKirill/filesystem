@@ -1,5 +1,4 @@
-quitt = "The program is completed"
-
+quit = "The program is completed"
 MENU = ("1. Browse the directory\n"
         "2. Up one level \n"
         "3. Level down \n"
@@ -8,5 +7,7 @@ MENU = ("1. Browse the directory\n"
         "6. Search for file \n"
         "7. Exiting the program \n"
         "Select menu item:")
-
-movedown = ('Choose a directory to get to: ')
+direct = 'Enter 1 if you want to search in the current directory, otherwise enter 2.'
+workdir = 'Enter directory path:'
+target = 'Enter target:'
+notarget = 'This directory does not contain a file with'
