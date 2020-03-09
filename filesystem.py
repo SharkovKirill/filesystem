@@ -1,4 +1,5 @@
 #Developers: Sharkov K(65%)
+#            Ermolenko V. - 45%
 import os
 
 
