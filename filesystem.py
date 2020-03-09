@@ -43,15 +43,14 @@ def countFiles(path):
 
 
 def moveDown():
-
-    print('\n' + 'Choose a directory to get to:' + '\n')
+    print('\n' + loc.movedown + '\n')
     for n in range(len(os.listdir(os.getcwd()))):
         print(str(n + 1) + '. ' + str(os.listdir(os.getcwd())[n]))
     togo = input()
     os.chdir(os.getcwd() + '/' + os.listdir(os.getcwd())[int(togo)])
 
 
-def findFiles(target,path):
+def findFiles(target, path):
     pass
 
 
@@ -69,7 +68,7 @@ def runCommand(command):
     elif command == 6:
         findFiles(target, path)
     elif command == 7:
-        print(loc.quit)
+        print(loc.quitt)
 
 
 def main():
