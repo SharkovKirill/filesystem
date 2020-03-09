@@ -1,5 +1,4 @@
 import os
-
 '''
 language = input('Change language: en, ru').lower()
 if language == 'en':
@@ -7,9 +6,7 @@ if language == 'en':
 elif language == 'ru':
     import locru as loc
 '''
-
 import locru as loc
-
 
 def acceptCommand():
     try:
@@ -22,63 +19,73 @@ def acceptCommand():
         return com
 
 
-def countBytes():
-    try:
-        if not os.listdir(os.getcwd()):
-            return
-        return os.path.getsize(os.getcwd())
-    except:
-        return acceptCommand()
+# TODO:(Sveta) defs: countBytes(path), moveUp()
+# TODO:(Vladimir) defs: countFiles(path), moveDown(currentDir)
 
-
+def countBytes(path):
+    pass
 def moveUp():
-    try:
-        return os.chdir(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
-    except:
-        return acceptCommand()
-
-
+    pass
 def countFiles(path):
     pass
-
-
-def moveDown():
-    print('\n' + loc.movedown + '\n')
-    for n in range(len(os.listdir(os.getcwd()))):
-        print(str(n + 1) + '. ' + str(os.listdir(os.getcwd())[n]))
-    togo = input()
-    os.chdir(os.getcwd() + '/' + os.listdir(os.getcwd())[int(togo)])
-
-
-def findFiles(target, path):
+def moveDown(currentDir):
     pass
 
+findtarget = 0
+
+def search(target, workdirect):
+    try:
+        global findtarget
+        a = []
+        b = []
+        b = os.listdir(workdirect)
+        for name in b:
+            a.append(name.lower())
+        for i in range(len(a)):
+            if target in a[i]:
+                print(os.path.join(workdirect, a[i]))
+                findtarget += 1
+            newworkdirect = os.path.join(workdirect, a[i])
+            search(target, newworkdirect)
+
+    except:
+        pass
+
+
+def findFiles():
+    direct = int(input(loc.direct))
+    target = input(loc.target)
+    if direct == 1:
+        workdir = os.getcwd()
+    else:
+        workdir = input(loc.workdir)
+    search(target, workdir)
+    if findtarget == 0:
+        print(loc.notarget, target)
 
 def runCommand(command):
     if command == 1:
-        os.listdir(os.getcwd())
+        print(os.listdir(os.getcwd()))
     elif command == 2:
         moveUp()
     elif command == 3:
-        moveDown()
+        moveDown(currentDir)
     elif command == 4:
         countFiles(path)
     elif command == 5:
-        print(countBytes())
+        countBytes(path)
     elif command == 6:
-        findFiles(target, path)
+        findFiles()
     elif command == 7:
-        print(loc.quitt)
-
+        print(loc.quit)
 
 def main():
     while True:
+        print()
         print(os.getcwd())
         print(loc.MENU)
         command = acceptCommand()
         runCommand(command)
         if command == 7:
             break
-
-
 main()
