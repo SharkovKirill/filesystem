@@ -7,3 +7,7 @@ MENU = ("1. Browse the directory\n"
         "6. Search for file \n"
         "7. Exiting the program \n"
         "Select menu item:")
+direct = 'Enter 1 if you want to search in the current directory, otherwise enter 2.'
+workdir = 'Enter directory path:'
+target = 'Enter target:'
+notarget = 'This directory does not contain a file with'
